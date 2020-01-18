@@ -75,7 +75,6 @@ namespace MagicLeap
             _mediaPlayer.OnVideoPrepared += HandleVideoPrepared;
 
             _screenRenderer = _screen.GetComponent<Renderer>();
-			_screenRenderer.enabled = false;
         }
 
         void OnDestroy()

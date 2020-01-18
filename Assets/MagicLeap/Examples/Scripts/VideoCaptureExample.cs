@@ -104,29 +104,6 @@ namespace MagicLeap
                     EndCapture();
                 }
             }
-//			if (MLHands.Right.KeyPose.ToString() == button)
-//			{
-//				if (!_isCapturing)
-//				{
-//					StartCapture();
-//				}
-//				else if(_isCapturing && Time.time - _captureStartTime > _minRecordingTime)
-//				{
-//					EndCapture();
-//				}
-//			}
-			if ((MLHands.Right.KeyPose.ToString () == "Thumb") && (MLHands.Left.KeyPose.ToString () == "Thumb")) {
-				if (!_isCapturing) {
-					StartCapture ();
-				}
-			}
-			if ((MLHands.Right.KeyPose.ToString() == "OpenHand")&& (MLHands.Left.KeyPose.ToString() == "OpenHand") ){
-				if(_isCapturing && Time.time - _captureStartTime > _minRecordingTime)
-					{
-						EndCapture();
-					}
-		
-			}
         }
 
         /// <summary>
@@ -398,7 +375,5 @@ namespace MagicLeap
             }
         }
         #endregion
-
     }
-
 }
