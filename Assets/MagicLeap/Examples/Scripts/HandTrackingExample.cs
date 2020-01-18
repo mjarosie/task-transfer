@@ -47,15 +47,15 @@ namespace MagicLeap
         /// </summary>
         void Update()
         {
-            if (MLHands.IsStarted)
-            {
-                _statusText.text = string.Format(
-                    "Current Hand Gestures\nLeft: {0}, {2}% confidence\nRight: {1}, {3}% confidence",
-                    MLHands.Left.KeyPose.ToString(),
-                    MLHands.Right.KeyPose.ToString(),
-                    (MLHands.Left.KeyPoseConfidence * 100.0f).ToString("n0"),
-                    (MLHands.Right.KeyPoseConfidence * 100.0f).ToString("n0"));
-            }
+//            if (MLHands.IsStarted)
+//            {
+//                _statusText.text = string.Format(
+//                    "Current Hand Gestures\nLeft: {0}, {2}% confidence\nRight: {1}, {3}% confidence",
+//                    MLHands.Left.KeyPose.ToString(),
+//                    MLHands.Right.KeyPose.ToString(),
+//                    (MLHands.Left.KeyPoseConfidence * 100.0f).ToString("n0"),
+//                    (MLHands.Right.KeyPoseConfidence * 100.0f).ToString("n0"));
+//            }
         }
         #endregion
     }

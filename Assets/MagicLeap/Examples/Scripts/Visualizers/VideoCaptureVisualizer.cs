@@ -27,6 +27,11 @@ namespace MagicLeap
         private GameObject _screen = null;
         private Renderer _screenRenderer = null;
         private MLMediaPlayer _mediaPlayer = null;
+		public GameObject rightHand;
+		public GameObject leftHand;
+		public GameObject rightHand2;
+		public GameObject leftHand2;
+
 
         [Header("Visuals")]
         [SerializeField, Tooltip("Text to show instructions for capturing video")]
@@ -105,7 +110,11 @@ namespace MagicLeap
 
             // Manage canvas visuals
             _recordingIndicator.SetActive(true);
-            _previewText.text = "Press the bumper to stop capturing a video.";
+            _previewText.text = "Hands Up to Stop capturing a video.";
+			rightHand.SetActive(false);
+			leftHand.SetActive (false);
+			rightHand2.SetActive (true);
+			leftHand2.SetActive (true);
 
             // Disable the preview
             _screenRenderer.enabled = false;
@@ -119,8 +128,11 @@ namespace MagicLeap
         {
             // Manage canvas visuals
             _recordingIndicator.SetActive(false);
-            _previewText.text = "Press the bumper to start capturing a video.";
-
+            _previewText.text = "Thumbs Up to start capturing a video.";
+			rightHand.SetActive (true);
+			leftHand.SetActive (true);
+			rightHand2.SetActive (false);
+			leftHand2.SetActive (false);
             // Load the captured video
             _mediaPlayer.VideoSource = path;
             MLResult result = _mediaPlayer.PrepareVideo();
