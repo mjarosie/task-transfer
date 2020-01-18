@@ -27,10 +27,10 @@ namespace MagicLeap
         private GameObject _screen = null;
         private Renderer _screenRenderer = null;
         private MLMediaPlayer _mediaPlayer = null;
-		public GameObject rightHand;
-		public GameObject leftHand;
-		public GameObject rightHand2;
-		public GameObject leftHand2;
+		public GameObject rightHandThumbsUp;
+		public GameObject leftHandThumbsUp;
+		public GameObject rightHandOpenHand;
+		public GameObject leftHandOpenHand;
 
 
         [Header("Visuals")]
@@ -102,6 +102,7 @@ namespace MagicLeap
         /// </summary>
         public void OnCaptureStarted()
         {
+            Debug.Log("Capture started");
             if (_mediaPlayer.IsPlaying)
             {
                 _mediaPlayer.Stop();
@@ -110,10 +111,10 @@ namespace MagicLeap
             // Manage canvas visuals
             _recordingIndicator.SetActive(true);
             _previewText.text = "Hands Up to Stop capturing a video.";
-			rightHand.SetActive(false);
-			leftHand.SetActive (false);
-			rightHand2.SetActive (true);
-			leftHand2.SetActive (true);
+            rightHandThumbsUp.SetActive(false);
+            leftHandThumbsUp.SetActive (false);
+            rightHandOpenHand.SetActive (true);
+            leftHandOpenHand.SetActive (true);
 
             // Disable the preview
             _screenRenderer.enabled = false;
@@ -125,13 +126,14 @@ namespace MagicLeap
         /// <param name="path">file path to load captured video to.</param>
         public void OnCaptureEnded(string path)
         {
+            Debug.Log("Capture ended");
             // Manage canvas visuals
             _recordingIndicator.SetActive(false);
             _previewText.text = "Thumbs Up to start capturing a video.";
-			rightHand.SetActive (true);
-			leftHand.SetActive (true);
-			rightHand2.SetActive (false);
-			leftHand2.SetActive (false);
+            rightHandThumbsUp.SetActive (true);
+            leftHandThumbsUp.SetActive (true);
+            rightHandOpenHand.SetActive (false);
+            leftHandOpenHand.SetActive (false);
             // Load the captured video
             _mediaPlayer.VideoSource = path;
             MLResult result = _mediaPlayer.PrepareVideo();

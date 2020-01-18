@@ -26,7 +26,7 @@ namespace MagicLeap
     {
         [System.Serializable]
         private class VideoCaptureEvent : UnityEvent<string>
-        {}
+        { }
 
         #region Private Variables
         [SerializeField, Tooltip("The maximum amount of time the camera can be recording for (in seconds.)")]
@@ -41,6 +41,14 @@ namespace MagicLeap
 
         [SerializeField, Tooltip("Event called when recording stops")]
         private VideoCaptureEvent OnVideoCaptureEnded = null;
+
+        //public GameObject moveUpInstructions;
+        //public GameObject rightHandOk;
+        //public GameObject leftHandOk;
+        //public GameObject moveDownInstructions;
+        //public GameObject rightHandC;
+        //public GameObject leftHandC;
+
 
         private const string _validFileFormat = ".mp4";
 
@@ -57,6 +65,11 @@ namespace MagicLeap
         private float _captureStartTime;
 
         private PrivilegeRequester _privilegeRequester = null;
+
+        //// HeadposeCanvas script
+        //[SerializeField, Tooltip("Headpose Canvas Script")]
+        //private HeadposeCanvas _headposeCanvasScript = null;
+        //private bool _canvasBroughtUp = false;
 
         private bool _hasStarted = false;
 
@@ -96,37 +109,62 @@ namespace MagicLeap
 
         void Update()
         {
-           if (_isCapturing)
-           {
+            if (_isCapturing)
+            {
                 // If the recording has gone longer than the max time
                 if (Time.time - _captureStartTime > _maxRecordingTime)
                 {
                     EndCapture();
                 }
             }
-//			if (MLHands.Right.KeyPose.ToString() == button)
-//			{
-//				if (!_isCapturing)
-//				{
-//					StartCapture();
-//				}
-//				else if(_isCapturing && Time.time - _captureStartTime > _minRecordingTime)
-//				{
-//					EndCapture();
-//				}
-//			}
-			if ((MLHands.Right.KeyPose.ToString () == "Thumb") && (MLHands.Left.KeyPose.ToString () == "Thumb")) {
-				if (!_isCapturing) {
-					StartCapture ();
-				}
-			}
-			if ((MLHands.Right.KeyPose.ToString() == "OpenHand")&& (MLHands.Left.KeyPose.ToString() == "OpenHand") ){
-				if(_isCapturing && Time.time - _captureStartTime > _minRecordingTime)
-					{
-						EndCapture();
-					}
-		
-			}
+            if ((MLHands.Right.KeyPose.ToString() == "Thumb") && (MLHands.Left.KeyPose.ToString() == "Thumb"))
+            {
+                if (!_isCapturing)
+                {
+                    StartCapture();
+                }
+            }
+            else if ((MLHands.Right.KeyPose.ToString() == "OpenHand") && (MLHands.Left.KeyPose.ToString() == "OpenHand"))
+            {
+                if (_isCapturing && Time.time - _captureStartTime > _minRecordingTime)
+                {
+                    //moveUpInstructions.SetActive(true);
+                    //rightHandOk.SetActive(true);
+                    //leftHandOk.SetActive(true);
+
+                    EndCapture();
+                }
+            }
+            //else if ((MLHands.Left.KeyPose.ToString() == "Ok") && (MLHands.Right.KeyPose.ToString() == "Ok"))
+            //{
+            //    if (!_isCapturing && !_canvasBroughtUp)
+            //    {
+            //        _headposeCanvasScript.CanvasDistanceUpwards += 0.5f;
+            //        _canvasBroughtUp = true;
+
+            //        moveUpInstructions.SetActive(false);
+            //        rightHandOk.SetActive(false);
+            //        leftHandOk.SetActive(false);
+            //        moveDownInstructions.SetActive(false);
+            //        rightHandC.SetActive(false);
+            //        leftHandC.SetActive(false);
+            //    }
+            //}
+            //else if ((MLHands.Left.KeyPose.ToString() == "C") && (MLHands.Right.KeyPose.ToString() == "C"))
+            //{
+            //    if (!_isCapturing && _canvasBroughtUp)
+            //    {
+            //        _headposeCanvasScript.CanvasDistanceUpwards -= 0.5f;
+            //        _canvasBroughtUp = false;
+
+            //        moveUpInstructions.SetActive(true);
+            //        rightHandOk.SetActive(true);
+            //        leftHandOk.SetActive(true);
+            //        moveDownInstructions.SetActive(false);
+            //        rightHandC.SetActive(false);
+            //        leftHandC.SetActive(false);
+            //    }
+            //}
         }
 
         /// <summary>
@@ -157,7 +195,7 @@ namespace MagicLeap
                 if (_isCameraConnected && MLCamera.IsStarted)
                 {
                     MLResult result = MLCamera.ApplicationPause(_appPaused);
-                    if(!result.IsOk)
+                    if (!result.IsOk)
                     {
                         Debug.LogErrorFormat("Error: VideoCaptureExample failed to pause MLCamera, disabling script. Reason: {0}", result);
                         enabled = false;
@@ -204,7 +242,7 @@ namespace MagicLeap
         /// <param name="fileName">File path to write the video to.</param>
         public void StartCapture(string fileName)
         {
-            if(!_isCapturing && MLCamera.IsStarted && _isCameraConnected)
+            if (!_isCapturing && MLCamera.IsStarted && _isCameraConnected)
             {
                 // Check file fileName extensions
                 string extension = System.IO.Path.GetExtension(fileName);
@@ -391,7 +429,7 @@ namespace MagicLeap
                 {
                     StartCapture();
                 }
-                else if(_isCapturing && Time.time - _captureStartTime > _minRecordingTime)
+                else if (_isCapturing && Time.time - _captureStartTime > _minRecordingTime)
                 {
                     EndCapture();
                 }
