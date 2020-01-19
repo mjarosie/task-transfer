@@ -27,7 +27,7 @@ namespace MagicLeap
         [System.Serializable]
         private class VideoCaptureEvent : UnityEvent<string>
         { }
-
+        public HeadposeCanvas TheForce;
         #region Private Variables
         [SerializeField, Tooltip("The maximum amount of time the camera can be recording for (in seconds.)")]
         private float _maxRecordingTime = 10.0f;
@@ -117,6 +117,18 @@ namespace MagicLeap
                     EndCapture();
                 }
             }
+            if ((MLHands.Right.KeyPose.ToString() == "OpenHand") && !(MLHands.Left.KeyPose.ToString() == "OpenHand") && !(_isCapturing)) 
+            {
+                TheForce.CanvasDistanceForwards = 5f;
+            }
+
+            if ((MLHands.Right.KeyPose.ToString() == "Fist") && !(_isCapturing))
+            {
+                TheForce.CanvasDistanceForwards = 2.5f;
+            }
+        
+
+
             if ((MLHands.Right.KeyPose.ToString() == "Thumb") && (MLHands.Left.KeyPose.ToString() == "Thumb"))
             {
                 if (!_isCapturing)

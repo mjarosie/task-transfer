@@ -1864,6 +1864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf3740a87fd441c3a74c6daa5fa60b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TheForce: {fileID: 412655404}
   _maxRecordingTime: 60
   _controllerConnectionHandler: {fileID: 498394103}
   OnVideoCaptureStarted:
