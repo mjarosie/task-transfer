@@ -1720,7 +1720,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789395650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0141}
+  m_LocalPosition: {x: 0, y: 0, z: -0.065}
   m_LocalScale: {x: 0.0006864315, y: 0.0006864315, z: 0.0006864315}
   m_Children: []
   m_Father: {fileID: 1468009404}
@@ -1728,7 +1728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.3186, y: -0.1827}
+  m_AnchoredPosition: {x: -0.249, y: -0.18600002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1789395652
@@ -1889,13 +1889,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  moveUpInstructions: {fileID: 1441439066}
-  rightHandOk: {fileID: 625495609}
-  leftHandOk: {fileID: 1642373600}
-  moveDownInstructions: {fileID: 2103579242}
-  rightHandC: {fileID: 11221252}
-  leftHandC: {fileID: 2144790079}
-  _headposeCanvasScript: {fileID: 412655404}
 --- !u!114 &1889385894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1937,7 +1930,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919026952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.017}
+  m_LocalPosition: {x: 0, y: 0, z: 0.003}
   m_LocalScale: {x: 0.0006864315, y: 0.0006864315, z: 0.0006864315}
   m_Children: []
   m_Father: {fileID: 1468009404}
@@ -1945,7 +1938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.118, y: -0.18600002}
+  m_AnchoredPosition: {x: 0.004000008, y: -0.18600002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1919026954

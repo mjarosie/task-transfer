@@ -42,12 +42,12 @@ namespace MagicLeap
         [SerializeField, Tooltip("Event called when recording stops")]
         private VideoCaptureEvent OnVideoCaptureEnded = null;
 
-        public GameObject moveUpInstructions;
-        public GameObject rightHandOk;
-        public GameObject leftHandOk;
-        public GameObject moveDownInstructions;
-        public GameObject rightHandC;
-        public GameObject leftHandC;
+        //public GameObject moveUpInstructions;
+        //public GameObject rightHandOk;
+        //public GameObject leftHandOk;
+        //public GameObject moveDownInstructions;
+        //public GameObject rightHandC;
+        //public GameObject leftHandC;
 
 
         private const string _validFileFormat = ".mp4";
@@ -66,10 +66,10 @@ namespace MagicLeap
 
         private PrivilegeRequester _privilegeRequester = null;
 
-        // HeadposeCanvas script
-        [SerializeField, Tooltip("Headpose Canvas Script")]
-        private HeadposeCanvas _headposeCanvasScript = null;
-        private bool _canvasBroughtUp = false;
+        //// HeadposeCanvas script
+        //[SerializeField, Tooltip("Headpose Canvas Script")]
+        //private HeadposeCanvas _headposeCanvasScript = null;
+        //private bool _canvasBroughtUp = false;
 
         private bool _hasStarted = false;
 
@@ -128,43 +128,43 @@ namespace MagicLeap
             {
                 if (_isCapturing && Time.time - _captureStartTime > _minRecordingTime)
                 {
-                    moveUpInstructions.SetActive(true);
-                    rightHandOk.SetActive(true);
-                    leftHandOk.SetActive(true);
+                    //moveUpInstructions.SetActive(true);
+                    //rightHandOk.SetActive(true);
+                    //leftHandOk.SetActive(true);
 
                     EndCapture();
                 }
             }
-            else if ((MLHands.Left.KeyPose.ToString() == "Ok") && (MLHands.Right.KeyPose.ToString() == "Ok"))
-            {
-                if (!_isCapturing && !_canvasBroughtUp)
-                {
-                    _headposeCanvasScript.CanvasDistanceUpwards += 0.5f;
-                    _canvasBroughtUp = true;
+            //else if ((MLHands.Left.KeyPose.ToString() == "Ok") && (MLHands.Right.KeyPose.ToString() == "Ok"))
+            //{
+            //    if (!_isCapturing && !_canvasBroughtUp)
+            //    {
+            //        _headposeCanvasScript.CanvasDistanceUpwards += 0.5f;
+            //        _canvasBroughtUp = true;
 
-                    moveUpInstructions.SetActive(false);
-                    rightHandOk.SetActive(false);
-                    leftHandOk.SetActive(false);
-                    moveDownInstructions.SetActive(true);
-                    rightHandC.SetActive(true);
-                    leftHandC.SetActive(true);
-                }
-            }
-            else if ((MLHands.Left.KeyPose.ToString() == "C") && (MLHands.Right.KeyPose.ToString() == "C"))
-            {
-                if (!_isCapturing && _canvasBroughtUp)
-                {
-                    _headposeCanvasScript.CanvasDistanceUpwards -= 0.5f;
-                    _canvasBroughtUp = false;
+            //        moveUpInstructions.SetActive(false);
+            //        rightHandOk.SetActive(false);
+            //        leftHandOk.SetActive(false);
+            //        moveDownInstructions.SetActive(false);
+            //        rightHandC.SetActive(false);
+            //        leftHandC.SetActive(false);
+            //    }
+            //}
+            //else if ((MLHands.Left.KeyPose.ToString() == "C") && (MLHands.Right.KeyPose.ToString() == "C"))
+            //{
+            //    if (!_isCapturing && _canvasBroughtUp)
+            //    {
+            //        _headposeCanvasScript.CanvasDistanceUpwards -= 0.5f;
+            //        _canvasBroughtUp = false;
 
-                    moveUpInstructions.SetActive(true);
-                    rightHandOk.SetActive(true);
-                    leftHandOk.SetActive(true);
-                    moveDownInstructions.SetActive(false);
-                    rightHandC.SetActive(false);
-                    leftHandC.SetActive(false);
-                }
-            }
+            //        moveUpInstructions.SetActive(true);
+            //        rightHandOk.SetActive(true);
+            //        leftHandOk.SetActive(true);
+            //        moveDownInstructions.SetActive(false);
+            //        rightHandC.SetActive(false);
+            //        leftHandC.SetActive(false);
+            //    }
+            //}
         }
 
         /// <summary>
